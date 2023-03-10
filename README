@@ -1,0 +1,37 @@
+amanda yun akyun@ucsc.edu 1903241 pa6
+
+file submitted:
+List.cpp - same as pa5
+List.h - same as pa5
+ListTest.cpp - same as pa5
+
+Arithmetic.cpp - tests all of the functions in BigInteger. Simple read input from a file, do the calculators, and then output the results. Must make sure to skip the second line when reading the input file because it is empty. 
+the first line is the first BigInt and the third line is the second BigInt. 
+Must make sure to reset A if you are doing A*=B or something like that because it changes the value of A. 
+close files at the end
+
+BigInteger.cpp - Kind of difficult. Couldn't get some of the Arithmetic test to pass but that's okay. 
+Added helper function removeZeros to remove extra 0's that were leftover in a carry in normalize().
+Added another helper function checkQ to check if all 9 spaces were taken up by some value whether its a 0 or another integer. Used this in normalize()
+Normalize(): this was tough. Lot of conditions to account for. Add base if negative. Subtract if the element is greater than the element. the leftover would be carried to the next (or previous in this case) element. replaces the element with the normalized element. 
+shiftList(): used in mult(). Shifts the list by adding an element of 0 at the end of the list. 
+scalarMult(): helperfunction for mult. performs a simple multiplication process. 
+BigInteger(): constructor, set signum to 0 and digits to an empty list
+BigInteger(string): overloaded constructor. reads a string value, deletes leading 0's and adds it to a list so that each element in the list does not exceed the base. 
+BigInteger(const): copy constructor
+sign(): returns if BigInt is positive, negative or 0
+compare(): checks which bigInt is larger/smaller. checks the lengths, signs and values
+makeZero(): clears the digits list and sets signum to 0
+negate(): changes the sign to its opposite.
+sumList(): helper function used in mult and add. loops through and sums the elements or prepends if one list's length is greater than the other. sets the sign accordingly
+
+checkZero(): another helper function used in add. Checks if the big int is 0
+add(): calls sumList. Assigns signum accordingly. normalizes its list at the end
+sub(): negates A and calls add on it. Assigns sign accordingly. Normalize again. 
+mult(): calls scalarMult(). assigns sign accordingly. shifts the list before multplying the next element. normalizes the list at th end before returning. 
+
+to_string(): converts the list to a string to print out. fills in empty spaces with 0's. adds the sign to the beginning of the string depending on if the it is negative or positive. if the sign is 0 then just append a 0 to the string
+
+BigInteger.h - given
+BigIntegerTest.cpp - tests all the functions 
+Makefile 
